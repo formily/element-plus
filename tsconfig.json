@@ -16,7 +16,7 @@
     "downlevelIteration": true,
     "baseUrl": ".",
     "paths": {
-      "@formily/element-plus": ["packages/components/src"]
+      "@niceone/formily-element-plus": ["packages/components/src"]
     },
     "types": ["vite/client"]
   }

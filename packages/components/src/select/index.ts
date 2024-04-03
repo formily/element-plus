@@ -24,7 +24,14 @@ const SelectOption = defineComponent({
   props: ['options'],
   setup(customProps, { attrs, slots }) {
     return () => {
-      const options = customProps.options || []
+      console.log('options', customProps.options, customProps.enum)
+      let options = customProps.options || []
+      // if (!customProps.options || customProps.options?.length === 0) {
+      //   options = customProps.enum || []
+      // }
+      console.log('options result', options.length)
+      // [{label: '选项1', value: 1}]
+
       const children =
         options.length !== 0
           ? {
@@ -33,12 +40,12 @@ const SelectOption = defineComponent({
                   if (typeof option === 'string') {
                     return h(
                       ElOption,
-                      { key: option, value: option, label: option },
-                      {
-                        default: () => [
-                          resolveComponent(slots?.option ?? option, { option }),
-                        ],
-                      }
+                      { key: option, value: option, label: option }
+                      // {
+                      //   default: () => [
+                      //     resolveComponent(slots?.option ?? option, { option }),
+                      //   ],
+                      // }
                     )
                   } else {
                     return h(
@@ -46,12 +53,12 @@ const SelectOption = defineComponent({
                       {
                         key: option.value,
                         ...option,
-                      },
-                      {
-                        default: () => [
-                          resolveComponent(slots?.option ?? option, { option }),
-                        ],
                       }
+                      // {
+                      //   default: () => [
+                      //     resolveComponent(slots?.option ?? option, { option }),
+                      //   ],
+                      // }
                     )
                   }
                 }),
